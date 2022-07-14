@@ -13,6 +13,19 @@ public class GitBash {
 
     public static void main(String[] args) throws IOException {
         runCommand("curl https://www.baidu.com"  + " > " + path_file_output_git_bash);
+
+
+        String os = System.getProperty("os.name");
+        //Windows操作系统
+        if (os != null && os.toLowerCase().startsWith("windows")) {
+            System.out.println(String.format("当前系统版本是:%s", os));
+        } else if (os != null && os.toLowerCase().startsWith("linux")) {//Linux操作系统
+            System.out.println(String.format("当前系统版本是:%s", os));
+        } else { //其它操作系统
+            System.out.println(String.format("当前系统版本是:%s", os));
+        }
+
+
     }
 
     public static void runCommand(String command) throws IOException {
