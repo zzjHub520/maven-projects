@@ -12,7 +12,7 @@ public class GitBash {
             "C:/Users/zzj/Documents/workspace/Java/test/gitbash-test1/Output.txt";
 
     public static void main(String[] args) throws IOException {
-        runCommand("curl https://www.baidu.com"  + " > " + path_file_output_git_bash);
+        runCommand("curl -X POST  '192.168.10.22:8080/post' -d '{\"pageSize\":\"20\",\"pageNo\":1,\"pblds\":[\"11\",\"1080\",\"12\",\"13\",\"14\",\"47\",\"15\",\"1033\",\"1032\",\"1031\",\"270\",\"266\",\"1237\",\"234\",\"334\",\"1015\",\"1079\",\"10\"],\"processTypeList\":[\"NEW_DTS\",\"REVIEW\",\"ANALYSIS\",\"ANALYSIS_REVIEW\",\"MODIFY\",\"MODIFY_REVIEW\",\"ORG_TEST\",\"BACK_TEST\",\"CLOSE\"]}'"  + " > " + path_file_output_git_bash);
 
 
         String os = System.getProperty("os.name");
