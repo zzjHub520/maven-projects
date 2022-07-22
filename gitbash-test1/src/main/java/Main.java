@@ -52,8 +52,18 @@ public class Main {
         return strList;
     }
 
-    public static void main(String[] args) {
-        System.out.println(runShell("pwd"));
+    private static void writeFileWriter(String fileName, String contents) throws IOException {
+        try (FileWriter fw = new FileWriter(fileName)) {
+            fw.write(contents);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        String sb = "#!/bin/bash\n" +
+                "echo \"hhhhhhhhhhffff\" \n";
+        writeFileWriter("./test.sh", sb);
+        System.out.println(runShell("sh ./test.sh").get(0));
+        runShell("rm -rf ./test.sh ");
     }
 
     public static List<String> runShell(String shStr) {
@@ -73,8 +83,6 @@ public class Main {
         }
         return strList;
     }
-
-
 
     public static List<String> runGitShell(String command) {
         List<String> strList = new ArrayList<>();
@@ -99,5 +107,4 @@ public class Main {
         }
         return strList;
     }
-
 }
