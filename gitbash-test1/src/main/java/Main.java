@@ -1,3 +1,6 @@
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,12 +61,15 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         String sb = "#!/bin/bash\n" +
                 "echo \"hhhhhhhhhhffff\" \n";
         writeFileWriter("./test.sh", sb);
         System.out.println(runShell("sh ./test.sh").get(0));
-        runShell("rm -rf ./test.sh ");
+//        runShell("rm -rf ./test.sh ");
+
+        //System.out.println(runShell("pwd"));
+
     }
 
     public static List<String> runShell(String shStr) {
@@ -87,7 +93,7 @@ public class Main {
     public static List<String> runGitShell(String command) {
         List<String> strList = new ArrayList<>();
         String path_bash = "C:/Program Files/Git/git-bash.exe";
-        String path_file_output_git_bash = "./Output.txt";
+        String path_file_output_git_bash = "./cache";
         command += " | awk '{print $0}' > " + path_file_output_git_bash;
         try {
             ProcessBuilder processBuilder = new ProcessBuilder();
@@ -100,6 +106,11 @@ public class Main {
                 strList.add(myReader.nextLine());
             }
             myReader.close();
+
+//            processBuilder = new ProcessBuilder();
+//            processBuilder.command(path_bash, "-c", "rm -rf " + path_file_output_git_bash);
+//            process = processBuilder.start();
+//            process.waitFor();
         } catch (IOException | InterruptedException e) {
             System.out.println(" --- Interruption in RunCommand: " + e);
             // Restore interrupted state
